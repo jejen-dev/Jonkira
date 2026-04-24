@@ -4,29 +4,56 @@ const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
     const [sending, setSending] = useState(false);
     const [sent, setSent] = useState(false);
+    const [errorMsg, setErrorMsg] = useState('');
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id.replace('c-', '')]: e.target.value });
+        if (errorMsg) setErrorMsg('');
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const { name, email, message } = formData;
         if (!name || !email || !message) {
-            alert('Mohon isi nama, email, dan pesan Anda.');
+            setErrorMsg('Mohon isi nama, email, dan pesan Anda.');
             return;
         }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            alert('Masukkan alamat email yang valid.');
+            setErrorMsg('Masukkan alamat email yang valid.');
             return;
         }
+
         setSending(true);
-        setTimeout(() => {
+        setErrorMsg('');
+
+        try {
+            const response = await fetch('https://formspree.io/f/mykllqrn', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    subject: formData.subject,
+                    message: formData.message
+                })
+            });
+
+            if (response.ok) {
+                setSent(true);
+                setFormData({ name: '', email: '', subject: '', message: '' });
+                setTimeout(() => setSent(false), 4000);
+            } else {
+                const data = await response.json();
+                setErrorMsg(data.error || 'Gagal mengirim pesan. Silakan coba lagi.');
+            }
+        } catch (error) {
+            setErrorMsg('Terjadi kesalahan jaringan. Periksa koneksi Anda.');
+        } finally {
             setSending(false);
-            setSent(true);
-            setFormData({ name: '', email: '', subject: '', message: '' });
-            setTimeout(() => setSent(false), 3000);
-        }, 1200);
+        }
     };
 
     return (
@@ -42,7 +69,7 @@ const Contact = () => {
                     <div className="reveal-left">
                         <div className="contact-info-card">
                             <h3>Info Kontak</h3>
-                            <div className="contact-item"><div className="contact-icon">📍</div><div><div className="contact-label">Alamat</div><div className="contact-value">Boulevard Raya No.21 no. 20, Jaka Setia<br /></div>Kec. Bekasi Sel, Kota Bekasi.</div></div>
+                            <div className="contact-item"><div className="contact-icon">📍</div><div><div className="contact-label">Alamat</div><div className="contact-value">Boulevard Raya No.21 no. 20, Jaka Setia<br />Kec. Bekasi Sel, Kota Bekasi.</div></div></div>
                             <div className="contact-item"><div className="contact-icon">📞</div><div><div className="contact-label">Telepon</div><div className="contact-value"><a href="tel:+6289678924234">+62 89678924234</a></div></div></div>
                             <div className="contact-item"><div className="contact-icon">📧</div><div><div className="contact-label">Email</div><div className="contact-value"><a href="mailto:jejen.profile@gmail.com">Jonkira</a></div></div></div>
                             <div className="contact-item"><div className="contact-icon">🕐</div><div><div className="contact-label">Jam Buka</div><div className="contact-value">Sen–Kam: 11:00–22:00<br />Jum: 11:00–23:00<br />Sab: 10:00–23:00<br />Min: 10:00–21:00</div></div></div>
@@ -83,6 +110,7 @@ const Contact = () => {
                                 </div>
                                 <div className="form-group"><label htmlFor="c-subject">Subjek</label><input type="text" id="c-subject" value={formData.subject} onChange={handleChange} /></div>
                                 <div className="form-group"><label htmlFor="c-message">Pesan *</label><textarea id="c-message" value={formData.message} onChange={handleChange} style={{ minHeight: '120px' }} required></textarea></div>
+                                {errorMsg && <div className="form-error" style={{ color: '#e74c3c', marginTop: '8px', fontSize: '14px' }}>{errorMsg}</div>}
                                 <button type="submit" className="form-submit" disabled={sending}>
                                     {sending ? 'Mengirim...' : sent ? '✓ Pesan Terkirim!' : 'Kirim Pesan →'}
                                 </button>
@@ -91,7 +119,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-        </section >
+        </section>
     );
 };
 
