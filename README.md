@@ -1,7 +1,7 @@
 🍜 Jonkira Ramen - Landing Page Restoran Jepang
 Sebuah website landing page modern untuk restoran Jepang bernama Jonkira Ramen. Dibangun dengan React JS dan Tailwind CSS, website ini menampilkan berbagai informasi penting restoran seperti menu, galeri, informasi kontak, dan sistem reservasi online yang terintegrasi dengan WhatsApp.
 
-🔗 Demo Langsung: jonkira.vercel.app
+🔗 Demo Langsung: https://jonkira.vercel.app/
 
 ✨ Fitur Utama
 📱 Tampilan Responsif — Desain yang optimal di semua perangkat (desktop, tablet, mobile).
