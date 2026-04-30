@@ -6,34 +6,34 @@ Sebuah website landing page modern untuk restoran Jepang bernama Jonkira Ramen. 
 ✨ Fitur Utama
 📱 Tampilan Responsif — Desain yang optimal di semua perangkat (desktop, tablet, mobile).
 
-🌓 Dark / Light Mode — Tema yang dapat diubah sesuai preferensi pengguna [20†L5-L7].
+🌓 Dark / Light Mode — Tema yang dapat diubah sesuai preferensi pengguna.
 
-🍽️ Menu Interaktif — Menampilkan daftar menu lengkap dengan kategori (Ramen, Donburi, Side Dish) [17†L3-L22].
+🍽️ Menu Interaktif — Menampilkan daftar menu lengkap dengan kategori (Ramen, Donburi, Side Dish).
 
-🖼️ Galeri Foto dengan Lightbox — Menampilkan foto-foto makanan dan suasana restoran secara elegan [23†L32-L35].
+🖼️ Galeri Foto dengan Lightbox — Menampilkan foto-foto makanan dan suasana restoran secara elegan.
 
-📞 Reservasi via WhatsApp — Form reservasi yang langsung terhubung ke WhatsApp restoran [18†L12-L16].
+📞 Reservasi via WhatsApp — Form reservasi yang langsung terhubung ke WhatsApp restoran.
 
-💬 Tombol WhatsApp Mengambang — Memudahkan pengunjung untuk bertanya atau memesan [19†L3-L4].
+💬 Tombol WhatsApp Mengambang — Memudahkan pengunjung untuk bertanya atau memesan.
 
-📨 Formulir Kontak (Formspree) — Kirim pesan langsung dari website tanpa backend [14†L13-L17].
+📨 Formulir Kontak (Formspree) — Kirim pesan langsung dari website tanpa backend.
 
-📊 Status Buka/Tutup Real-time — Navbar secara otomatis menampilkan status buka/tutup restoran berdasarkan jadwal operasional [25†L6-L13].
+📊 Status Buka/Tutup Real-time — Navbar secara otomatis menampilkan status buka/tutup restoran berdasarkan jadwal operasional.
 
-🎞️ Promo Strip Berjalan — Menampilkan promo-promo menarik dengan efek scrolling tanpa henti [26†L6-L7].
+🎞️ Promo Strip Berjalan — Menampilkan promo-promo menarik dengan efek scrolling tanpa henti.
 
-⚡ Animasi Scroll — Efek animasi subtle saat pengguna menggulir halaman [10†L12-L15].
+⚡ Animasi Scroll — Efek animasi subtle saat pengguna menggulir halaman.
 
 ⚙️ Teknologi yang Digunakan
-React JS (v18.2.0) — Library JavaScript untuk membangun antarmuka pengguna [11†L4].
+React JS (v18.2.0) — Library JavaScript untuk membangun antarmuka pengguna.
 
-Vite — Build tool yang cepat untuk development dan production [11†L5-L6].
+Vite — Build tool yang cepat untuk development dan production.
 
 Tailwind CSS — Framework CSS utility-first (digunakan untuk styling).
 
-Formspree — Backendless form API untuk menangani pengiriman email dari formulir kontak [14†L14].
+Formspree — Backendless form API untuk menangani pengiriman email dari formulir kontak.
 
-EmailJS — Library untuk mengirim email langsung dari aplikasi frontend [11†L4].
+EmailJS — Library untuk mengirim email langsung dari aplikasi frontend.
 
 🚀 Cara Menjalankan Proyek
 Prasyarat
@@ -55,25 +55,6 @@ bash
 npm run dev
 Website akan terbuka di http://localhost:5173 secara otomatis.
 
-Build untuk production
-
-bash
-npm run build
-🗂️ Struktur Proyek
-text
-Jonkira/
-├── src/
-│   ├── components/     # Komponen-komponen React (About, Hero, Menu, dll)
-│   ├── context/        # Context API untuk tema dark/light mode
-│   ├── hooks/          # Custom hooks (scroll reveal animation)
-│   ├── App.jsx         # Komponen utama dan routing sederhana
-│   ├── App.css         # Styling global dan animasi CSS
-│   ├── main.jsx        # Entry point aplikasi
-│   └── index.css       # Styling dasar
-├── index.html          # Template utama HTML
-├── package.json        # Daftar dependensi dan script
-├── vite.config.js      # Konfigurasi Vite
-└── README.md           # Dokumentasi proyek (file ini)
 📄 Lisensi
 Proyek ini bersifat open-source dan dapat digunakan untuk keperluan belajar maupun komersial.
 
